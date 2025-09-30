@@ -84,7 +84,9 @@ const DocumentCard: React.FC<DocumentCardProps> = ({ document: documentItem }) =
   const [isDownloading, setIsDownloading] = useState(false);
   
   const handlePreview = () => {
-    window.open(documentItem.url, '_blank');
+    // Use Google Docs Viewer for PDF preview
+    const viewerUrl = `https://docs.google.com/viewer?url=${encodeURIComponent(documentItem.url)}&embedded=true`;
+    window.open(viewerUrl, '_blank');
   };
 
   const handleDownload = async () => {
