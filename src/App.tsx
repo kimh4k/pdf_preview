@@ -41,25 +41,25 @@ const documents: DocumentItem[] = [
     id: 1,
     title: "AWC ROYAL NSG LOW VOLTAGE & INSTRUMENTATION",
     size: "170.3 MB",
-    url: `${process.env.PUBLIC_URL || ''}/pdf/AWC ROYAL NSG LOW VOLTAGE & INSTRUMENTATION.pdf`
+    url: "https://github.com/kimh4k/pdf_preview/raw/main/public/pdf/AWC%20ROYAL%20NSG%20LOW%20VOLTAGE%20%26%20INSTRUMENTATION.pdf"
   },
   {
     id: 2,
     title: "AWC ROYALNSG FLEXIBLE CABLES",
     size: "93.8 MB", 
-    url: `${process.env.PUBLIC_URL || ''}/pdf/AWC ROYALNSG FLEXIBLE CABLES.pdf`
+    url: "https://github.com/kimh4k/pdf_preview/raw/main/public/pdf/AWC%20ROYALNSG%20FLEXIBLE%20CABLES.pdf"
   },
   {
     id: 3,
     title: "AWC ROYALNSG Low Voltage FRC",
     size: "64.3 MB",
-    url: `${process.env.PUBLIC_URL || ''}/pdf/AWC ROYALNSG Low Voltage FRC.pdf`
+    url: "https://github.com/kimh4k/pdf_preview/raw/main/public/pdf/AWC%20ROYALNSG%20Low%20Voltage%20FRC.pdf"
   },
   {
     id: 4,
     title: "AWC ROYALNSG MID HIGH EXTRA HIGH VOLTAGE",
     size: "52.7 MB",
-    url: `${process.env.PUBLIC_URL || ''}/pdf/AWC ROYALNSG MID HIGH EXTRA HIGH VOLTAGE.pdf`
+    url: "https://github.com/kimh4k/pdf_preview/raw/main/public/pdf/AWC%20ROYALNSG%20MID%20HIGH%20EXTRA%20HIGH%20VOLTAGE.pdf"
   }
 ];
 
