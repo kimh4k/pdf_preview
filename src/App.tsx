@@ -40,26 +40,26 @@ const documents: DocumentItem[] = [
   {
     id: 1,
     title: "AWC ROYAL NSG LOW VOLTAGE & INSTRUMENTATION",
-    size: "170.3 MB",
-    url: `${process.env.PUBLIC_URL || ''}/pdf/AWC ROYAL NSG LOW VOLTAGE & INSTRUMENTATION.pdf`
+    size: "20 MB",
+    url: `${process.env.PUBLIC_URL || ''}/pdf/AWC-ROYAL-NSG-LOW-VOLTAGE-INSTRUMENTATION_compressed.pdf`
   },
   {
     id: 2,
     title: "AWC ROYALNSG FLEXIBLE CABLES",
-    size: "93.8 MB", 
-    url: `${process.env.PUBLIC_URL || ''}/pdf/AWC ROYALNSG FLEXIBLE CABLES.pdf`
+    size: "10 MB", 
+    url: `${process.env.PUBLIC_URL || ''}/pdf/AWC-ROYALNSG-FLEXIBLE-CABLES_compressed.pdf`
   },
   {
     id: 3,
     title: "AWC ROYALNSG Low Voltage FRC",
-    size: "64.3 MB",
-    url: `${process.env.PUBLIC_URL || ''}/pdf/AWC ROYALNSG Low Voltage FRC.pdf`
+    size: "5.0 MB",
+    url: `${process.env.PUBLIC_URL || ''}/pdf/AWC-ROYALNSG-Low-Voltage-FRC_compressed.pdf`
   },
   {
     id: 4,
     title: "AWC ROYALNSG MID HIGH EXTRA HIGH VOLTAGE",
-    size: "52.7 MB",
-    url: `${process.env.PUBLIC_URL || ''}/pdf/AWC ROYALNSG MID HIGH EXTRA HIGH VOLTAGE.pdf`
+    size: "4.1 MB",
+    url: `${process.env.PUBLIC_URL || ''}/pdf/AWC-ROYALNSG-MID-HIGH-EXTRA-HIGH-VOLTAGE_compressed.pdf`
   }
 ];
 
@@ -84,21 +84,7 @@ const DocumentCard: React.FC<DocumentCardProps> = ({ document: documentItem }) =
   const [isDownloading, setIsDownloading] = useState(false);
   
   const handlePreview = () => {
-    // For local development and when files are served from the same domain
-    // Create a simple PDF viewer page
-    const pdfUrl = documentItem.url;
-    
-    // Check if it's a local URL (for development) or external URL (for production)
-    const isLocalUrl = pdfUrl.startsWith('/') || pdfUrl.includes(window.location.origin);
-    
-    if (isLocalUrl) {
-      // For local files, use direct browser PDF viewer
-      window.open(pdfUrl, '_blank');
-    } else {
-      // For external URLs, use PDF.js viewer with CORS handling
-      const pdfJsUrl = `https://mozilla.github.io/pdf.js/web/viewer.html?file=${encodeURIComponent(pdfUrl)}`;
-      window.open(pdfJsUrl, '_blank');
-    }
+    window.open(documentItem.url, '_blank');
   };
 
   const handleDownload = async () => {
