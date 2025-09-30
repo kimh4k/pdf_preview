@@ -84,9 +84,47 @@ const DocumentCard: React.FC<DocumentCardProps> = ({ document: documentItem }) =
   const [isDownloading, setIsDownloading] = useState(false);
   
   const handlePreview = () => {
-    // Use Google Docs Viewer for PDF preview
-    const viewerUrl = `https://docs.google.com/viewer?url=${encodeURIComponent(documentItem.url)}&embedded=true`;
-    window.open(viewerUrl, '_blank');
+    // Create a data URL approach for PDF preview
+    const pdfUrl = documentItem.url;
+    
+    // Try to open with PDF.js viewer first
+    const pdfJsUrl = `https://mozilla.github.io/pdf.js/web/viewer.html?file=${encodeURIComponent(pdfUrl)}`;
+    
+    // Open in new window with PDF.js viewer
+    const newWindow = window.open(pdfJsUrl, '_blank', 'width=1000,height=800');
+    
+    // Fallback: if PDF.js doesn't work, try direct embed
+    if (!newWindow) {
+      // Create a simple HTML page with embedded PDF
+      const htmlContent = `
+        <!DOCTYPE html>
+        <html>
+          <head>
+            <title>PDF Preview - ${documentItem.title}</title>
+            <style>
+              body { margin: 0; padding: 20px; font-family: Arial, sans-serif; }
+              .header { background: #f5f5f5; padding: 10px; margin-bottom: 10px; }
+              embed { width: 100%; height: 80vh; }
+            </style>
+          </head>
+          <body>
+            <div class="header">
+              <h3>${documentItem.title}</h3>
+              <p>Size: ${documentItem.size}</p>
+            </div>
+            <embed src="${pdfUrl}" type="application/pdf" />
+            <p><a href="${pdfUrl}" download="${documentItem.title}.pdf">Download PDF</a></p>
+          </body>
+        </html>
+      `;
+      
+      const blob = new Blob([htmlContent], { type: 'text/html' });
+      const url = URL.createObjectURL(blob);
+      window.open(url, '_blank');
+      
+      // Clean up after 1 minute
+      setTimeout(() => URL.revokeObjectURL(url), 60000);
+    }
   };
 
   const handleDownload = async () => {
