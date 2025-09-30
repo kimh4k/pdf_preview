@@ -41,25 +41,25 @@ const documents: DocumentItem[] = [
     id: 1,
     title: "AWC ROYAL NSG LOW VOLTAGE & INSTRUMENTATION",
     size: "170.3 MB",
-    url: "https://github.com/kimh4k/pdf_preview/raw/main/public/pdf/AWC%20ROYAL%20NSG%20LOW%20VOLTAGE%20%26%20INSTRUMENTATION.pdf"
+    url: `${process.env.PUBLIC_URL || ''}/pdf/AWC ROYAL NSG LOW VOLTAGE & INSTRUMENTATION.pdf`
   },
   {
     id: 2,
     title: "AWC ROYALNSG FLEXIBLE CABLES",
     size: "93.8 MB", 
-    url: "https://github.com/kimh4k/pdf_preview/raw/main/public/pdf/AWC%20ROYALNSG%20FLEXIBLE%20CABLES.pdf"
+    url: `${process.env.PUBLIC_URL || ''}/pdf/AWC ROYALNSG FLEXIBLE CABLES.pdf`
   },
   {
     id: 3,
     title: "AWC ROYALNSG Low Voltage FRC",
     size: "64.3 MB",
-    url: "https://github.com/kimh4k/pdf_preview/raw/main/public/pdf/AWC%20ROYALNSG%20Low%20Voltage%20FRC.pdf"
+    url: `${process.env.PUBLIC_URL || ''}/pdf/AWC ROYALNSG Low Voltage FRC.pdf`
   },
   {
     id: 4,
     title: "AWC ROYALNSG MID HIGH EXTRA HIGH VOLTAGE",
     size: "52.7 MB",
-    url: "https://github.com/kimh4k/pdf_preview/raw/main/public/pdf/AWC%20ROYALNSG%20MID%20HIGH%20EXTRA%20HIGH%20VOLTAGE.pdf"
+    url: `${process.env.PUBLIC_URL || ''}/pdf/AWC ROYALNSG MID HIGH EXTRA HIGH VOLTAGE.pdf`
   }
 ];
 
@@ -84,46 +84,20 @@ const DocumentCard: React.FC<DocumentCardProps> = ({ document: documentItem }) =
   const [isDownloading, setIsDownloading] = useState(false);
   
   const handlePreview = () => {
-    // Create a data URL approach for PDF preview
+    // For local development and when files are served from the same domain
+    // Create a simple PDF viewer page
     const pdfUrl = documentItem.url;
     
-    // Try to open with PDF.js viewer first
-    const pdfJsUrl = `https://mozilla.github.io/pdf.js/web/viewer.html?file=${encodeURIComponent(pdfUrl)}`;
+    // Check if it's a local URL (for development) or external URL (for production)
+    const isLocalUrl = pdfUrl.startsWith('/') || pdfUrl.includes(window.location.origin);
     
-    // Open in new window with PDF.js viewer
-    const newWindow = window.open(pdfJsUrl, '_blank', 'width=1000,height=800');
-    
-    // Fallback: if PDF.js doesn't work, try direct embed
-    if (!newWindow) {
-      // Create a simple HTML page with embedded PDF
-      const htmlContent = `
-        <!DOCTYPE html>
-        <html>
-          <head>
-            <title>PDF Preview - ${documentItem.title}</title>
-            <style>
-              body { margin: 0; padding: 20px; font-family: Arial, sans-serif; }
-              .header { background: #f5f5f5; padding: 10px; margin-bottom: 10px; }
-              embed { width: 100%; height: 80vh; }
-            </style>
-          </head>
-          <body>
-            <div class="header">
-              <h3>${documentItem.title}</h3>
-              <p>Size: ${documentItem.size}</p>
-            </div>
-            <embed src="${pdfUrl}" type="application/pdf" />
-            <p><a href="${pdfUrl}" download="${documentItem.title}.pdf">Download PDF</a></p>
-          </body>
-        </html>
-      `;
-      
-      const blob = new Blob([htmlContent], { type: 'text/html' });
-      const url = URL.createObjectURL(blob);
-      window.open(url, '_blank');
-      
-      // Clean up after 1 minute
-      setTimeout(() => URL.revokeObjectURL(url), 60000);
+    if (isLocalUrl) {
+      // For local files, use direct browser PDF viewer
+      window.open(pdfUrl, '_blank');
+    } else {
+      // For external URLs, use PDF.js viewer with CORS handling
+      const pdfJsUrl = `https://mozilla.github.io/pdf.js/web/viewer.html?file=${encodeURIComponent(pdfUrl)}`;
+      window.open(pdfJsUrl, '_blank');
     }
   };
 
