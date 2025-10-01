@@ -63,18 +63,6 @@ const documents: DocumentItem[] = [
   }
 ];
 
-// Header Component
-const Header: React.FC = () => (
-  <header className="text-center mb-16">
-    <div className="flex justify-center mb-6">
-      <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center shadow-lg">
-        <LibraryIcon />
-      </div>
-    </div>
-    <h1 className="text-4xl font-bold text-gray-800 mb-4">Document Library</h1>
-  </header>
-);
-
 // Document Card Component
 interface DocumentCardProps {
   document: DocumentItem;
@@ -192,7 +180,6 @@ const App: React.FC = () => {
   return (
     <div className="min-h-screen bg-slate-50 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
-        <Header />
         <DocumentGrid />
       </div>
     </div>
