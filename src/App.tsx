@@ -128,7 +128,14 @@ const DocumentCard: React.FC<DocumentCardProps> = ({ document: documentItem }) =
   };
 
   return (
-    <div className="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 p-3 md:p-6 flex flex-col h-full">
+    <div className="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 p-3 md:p-6 flex flex-col h-full relative">
+      {/* File Size - Upper Right Corner */}
+      <div className="absolute top-2 right-2 md:top-3 md:right-3">
+        <span className="text-xs md:text-sm text-gray-500 bg-gray-100 px-2 py-1 rounded-md font-medium">
+          {documentItem.size}
+        </span>
+      </div>
+      
       {/* Document Icon */}
       <div className="flex justify-center mb-3 md:mb-6">
         <div className="w-16 h-16 md:w-24 md:h-24 flex items-center justify-center">
@@ -140,14 +147,13 @@ const DocumentCard: React.FC<DocumentCardProps> = ({ document: documentItem }) =
       <div className="text-center flex-grow flex flex-col">
         <h3 className="text-xs md:text-sm lg:text-base font-normal text-gray-800 mb-2 md:mb-4 line-clamp-3 leading-relaxed">{documentItem.title}</h3>
         <div className="flex-grow"></div>
-        <p className="text-xs md:text-sm text-gray-500 mb-3 md:mb-6">{documentItem.size}</p>
       </div>
       
       {/* Action Buttons */}
-      <div className="space-y-2 md:space-y-3">
+      <div className="flex gap-2 md:gap-3">
         <button 
           onClick={handlePreview}
-          className="w-full py-2 md:py-3 px-2 md:px-4 bg-white border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 hover:scale-105 transition-all duration-200 flex items-center justify-center gap-1 md:gap-2 font-medium text-xs md:text-sm"
+          className="flex-1 py-2 md:py-3 px-2 md:px-4 bg-white border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 hover:scale-105 transition-all duration-200 flex items-center justify-center gap-1 md:gap-2 font-medium text-xs md:text-sm"
         >
           <EyeIcon />
           Preview
@@ -155,7 +161,7 @@ const DocumentCard: React.FC<DocumentCardProps> = ({ document: documentItem }) =
         <button 
           onClick={handleDownload}
           disabled={isDownloading}
-          className={`w-full py-2 md:py-3 px-2 md:px-4 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-lg hover:from-blue-600 hover:to-purple-700 hover:scale-105 transition-all duration-200 flex items-center justify-center gap-1 md:gap-2 font-medium shadow-md text-xs md:text-sm ${isDownloading ? 'opacity-75 cursor-not-allowed' : ''}`}
+          className={`flex-1 py-2 md:py-3 px-2 md:px-4 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-lg hover:from-blue-600 hover:to-purple-700 hover:scale-105 transition-all duration-200 flex items-center justify-center gap-1 md:gap-2 font-medium shadow-md text-xs md:text-sm ${isDownloading ? 'opacity-75 cursor-not-allowed' : ''}`}
         >
           <DownloadIcon />
           {isDownloading ? 'Downloading...' : 'Download'}
