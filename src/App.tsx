@@ -19,7 +19,7 @@ const DocumentIcon = () => (
   <img 
     src={`${process.env.PUBLIC_URL || ''}/pdf.png`} 
     alt="PDF Document" 
-    className="w-15 h-15 object-contain"
+    className="w-8 h-8 md:w-15 md:h-15 object-contain"
   />
 );
 
@@ -39,27 +39,27 @@ const DownloadIcon = () => (
 const documents: DocumentItem[] = [
   {
     id: 1,
-    title: "AWC ROYAL NSG LOW VOLTAGE & INSTRUMENTATION",
+    title: "Asian Wire & Cable Low Voltage & Instrumentation",
     size: "20 MB",
-    url: `${process.env.PUBLIC_URL || ''}/pdf/AWC-ROYAL-NSG-LOW-VOLTAGE-INSTRUMENTATION_compressed.pdf`
+    url: `${process.env.PUBLIC_URL || ''}/pdf/Asian-Wire-&Cable-LOW-VOLTAGE-INSTRUMENTATION.pdf`
   },
   {
     id: 2,
-    title: "AWC ROYALNSG FLEXIBLE CABLES",
+    title: "Asian Wire & Cable Flexible Cables",
     size: "10 MB", 
-    url: `${process.env.PUBLIC_URL || ''}/pdf/AWC-ROYALNSG-FLEXIBLE-CABLES_compressed.pdf`
+    url: `${process.env.PUBLIC_URL || ''}/pdf/Asian-Wire-&Cable-FLEXIBLE-CABLES.pdf`
   },
   {
     id: 3,
-    title: "AWC ROYALNSG Low Voltage FRC",
+    title: "Asian Wire & Cable Low Voltage FRC",
     size: "5.0 MB",
-    url: `${process.env.PUBLIC_URL || ''}/pdf/AWC-ROYALNSG-Low-Voltage-FRC_compressed.pdf`
+    url: `${process.env.PUBLIC_URL || ''}/pdf/Asian-Wire-&Cable-Low-Voltage-FRC.pdf`
   },
   {
     id: 4,
-    title: "AWC ROYALNSG MID HIGH EXTRA HIGH VOLTAGE",
+    title: "Asian Wire & Cable Mid High Extra High Voltage",
     size: "4.1 MB",
-    url: `${process.env.PUBLIC_URL || ''}/pdf/AWC-ROYALNSG-MID-HIGH-EXTRA-HIGH-VOLTAGE_compressed.pdf`
+    url: `${process.env.PUBLIC_URL || ''}/pdf/Asian-Wire-&Cable-Mid-High-Extra-High-Voltage.pdf`
   }
 ];
 
@@ -140,26 +140,26 @@ const DocumentCard: React.FC<DocumentCardProps> = ({ document: documentItem }) =
   };
 
   return (
-    <div className="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 p-6 flex flex-col h-full">
+    <div className="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 p-3 md:p-6 flex flex-col h-full">
       {/* Document Icon */}
-      <div className="flex justify-center mb-6">
-        <div className="w-20 h-20 flex items-center justify-center">
+      <div className="flex justify-center mb-3 md:mb-6">
+        <div className="w-12 h-12 md:w-20 md:h-20 flex items-center justify-center">
           <DocumentIcon />
         </div>
       </div>
       
       {/* Content */}
       <div className="text-center flex-grow flex flex-col">
-        <h3 className="text-base font-normal text-gray-800 mb-4">{documentItem.title}</h3>
+        <h3 className="text-xs md:text-sm lg:text-base font-normal text-gray-800 mb-2 md:mb-4 line-clamp-3 leading-relaxed">{documentItem.title}</h3>
         <div className="flex-grow"></div>
-        <p className="text-sm text-gray-500 mb-6">{documentItem.size}</p>
+        <p className="text-xs md:text-sm text-gray-500 mb-3 md:mb-6">{documentItem.size}</p>
       </div>
       
       {/* Action Buttons */}
-      <div className="space-y-3">
+      <div className="space-y-2 md:space-y-3">
         <button 
           onClick={handlePreview}
-          className="w-full py-3 px-4 bg-white border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 hover:scale-105 transition-all duration-200 flex items-center justify-center gap-2 font-medium"
+          className="w-full py-2 md:py-3 px-2 md:px-4 bg-white border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 hover:scale-105 transition-all duration-200 flex items-center justify-center gap-1 md:gap-2 font-medium text-xs md:text-sm"
         >
           <EyeIcon />
           Preview
@@ -167,7 +167,7 @@ const DocumentCard: React.FC<DocumentCardProps> = ({ document: documentItem }) =
         <button 
           onClick={handleDownload}
           disabled={isDownloading}
-          className={`w-full py-3 px-4 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-lg hover:from-blue-600 hover:to-purple-700 hover:scale-105 transition-all duration-200 flex items-center justify-center gap-2 font-medium shadow-md ${isDownloading ? 'opacity-75 cursor-not-allowed' : ''}`}
+          className={`w-full py-2 md:py-3 px-2 md:px-4 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-lg hover:from-blue-600 hover:to-purple-700 hover:scale-105 transition-all duration-200 flex items-center justify-center gap-1 md:gap-2 font-medium shadow-md text-xs md:text-sm ${isDownloading ? 'opacity-75 cursor-not-allowed' : ''}`}
         >
           <DownloadIcon />
           {isDownloading ? 'Downloading...' : 'Download'}
@@ -179,7 +179,7 @@ const DocumentCard: React.FC<DocumentCardProps> = ({ document: documentItem }) =
 
 // Document Grid Component
 const DocumentGrid: React.FC = () => (
-  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+  <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 lg:gap-8 mb-16 max-w-7xl mx-auto">
     {documents.map((document) => (
       <DocumentCard key={document.id} document={document} />
     ))}
