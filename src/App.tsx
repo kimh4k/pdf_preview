@@ -19,7 +19,7 @@ const DocumentIcon = () => (
   <img 
     src={`${process.env.PUBLIC_URL || ''}/pdf.png`} 
     alt="PDF Document" 
-    className="w-8 h-8 md:w-15 md:h-15 object-contain"
+    className="w-12 h-12 md:w-20 md:h-20 object-contain"
   />
 );
 
@@ -131,7 +131,7 @@ const DocumentCard: React.FC<DocumentCardProps> = ({ document: documentItem }) =
     <div className="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 p-3 md:p-6 flex flex-col h-full">
       {/* Document Icon */}
       <div className="flex justify-center mb-3 md:mb-6">
-        <div className="w-12 h-12 md:w-20 md:h-20 flex items-center justify-center">
+        <div className="w-16 h-16 md:w-24 md:h-24 flex items-center justify-center">
           <DocumentIcon />
         </div>
       </div>
