@@ -40,25 +40,25 @@ const documents: DocumentItem[] = [
   {
     id: 1,
     title: "Asian Wire & Cable Low Voltage & Instrumentation",
-    size: "20 MB",
+    size: "21.1 MB",
     url: `${process.env.PUBLIC_URL || ''}/pdf/Asian-Wire-&Cable-LOW-VOLTAGE-INSTRUMENTATION.pdf`
   },
   {
     id: 2,
     title: "Asian Wire & Cable Flexible Cables",
-    size: "10 MB", 
+    size: "10.8 MB", 
     url: `${process.env.PUBLIC_URL || ''}/pdf/Asian-Wire-&Cable-FLEXIBLE-CABLES.pdf`
   },
   {
     id: 3,
     title: "Asian Wire & Cable Low Voltage FRC",
-    size: "5.0 MB",
+    size: "5.2 MB",
     url: `${process.env.PUBLIC_URL || ''}/pdf/Asian-Wire-&Cable-Low-Voltage-FRC.pdf`
   },
   {
     id: 4,
     title: "Asian Wire & Cable Mid High Extra High Voltage",
-    size: "4.1 MB",
+    size: "4.3 MB",
     url: `${process.env.PUBLIC_URL || ''}/pdf/Asian-Wire-&Cable-Mid-High-Extra-High-Voltage.pdf`
   }
 ];
