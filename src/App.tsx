@@ -153,7 +153,7 @@ const DocumentCard: React.FC<DocumentCardProps> = ({ document: documentItem }) =
       <div className="flex gap-2 md:gap-3">
         <button 
           onClick={handlePreview}
-          className="flex-1 py-2 md:py-3 px-2 md:px-4 bg-white border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 hover:scale-105 transition-all duration-200 flex items-center justify-center gap-1 md:gap-2 font-medium text-xs md:text-sm"
+          className="flex-1 py-2 md:py-3 px-3 md:px-4 bg-white border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 hover:scale-105 transition-all duration-200 flex items-center justify-center gap-1 md:gap-2 font-medium text-sm md:text-sm"
         >
           <EyeIcon />
           Preview
@@ -161,7 +161,7 @@ const DocumentCard: React.FC<DocumentCardProps> = ({ document: documentItem }) =
         <button 
           onClick={handleDownload}
           disabled={isDownloading}
-          className={`flex-1 py-2 md:py-3 px-2 md:px-4 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-lg hover:from-blue-600 hover:to-purple-700 hover:scale-105 transition-all duration-200 flex items-center justify-center gap-1 md:gap-2 font-medium shadow-md text-xs md:text-sm ${isDownloading ? 'opacity-75 cursor-not-allowed' : ''}`}
+          className={`flex-1 py-2 md:py-3 px-3 md:px-4 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-lg hover:from-blue-600 hover:to-purple-700 hover:scale-105 transition-all duration-200 flex items-center justify-center gap-1 md:gap-2 font-medium shadow-md text-sm md:text-sm ${isDownloading ? 'opacity-75 cursor-not-allowed' : ''}`}
         >
           <DownloadIcon />
           {isDownloading ? 'Downloading...' : 'Download'}
